@@ -77,6 +77,9 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
+    annotaterb (4.25.0)
+      activerecord (>= 6.0.0)
+      activesupport (>= 6.0.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt_pbkdf (1.1.2)
@@ -112,6 +115,8 @@ GEM
     dotenv (3.2.0)
     drb (2.2.3)
     ed25519 (1.4.0)
+    enumerize (3.0.0)
+      activesupport (>= 3.2)
     erb (6.0.7)
     erubi (1.13.1)
     et-orbi (1.4.2)
@@ -419,12 +424,14 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  annotaterb
   bootsnap
   brakeman
   bundler-audit
   capybara
   cssbundling-rails
   debug
+  enumerize
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -461,6 +468,7 @@ CHECKSUMS
   activestorage (8.1.4) sha256=f4956f3ec9ee63e5e0b332b57c877cb627f82b56f4cc902279310d2aa285c7a8
   activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
+  annotaterb (4.25.0) sha256=1c7a4c43d6afe3eb460731289ea8c831e9d864ce2f57897b5e1c749c1dd4ed89
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bcrypt_pbkdf (1.1.2) sha256=c2414c23ce66869b3eb9f643d6a3374d8322dfb5078125c82792304c10b94cf6
@@ -481,6 +489,7 @@ CHECKSUMS
   dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   ed25519 (1.4.0) sha256=16e97f5198689a154247169f3453ef4cfd3f7a47481fde0ae33206cdfdcac506
+  enumerize (3.0.0) sha256=977b90c103bec66f65b4dced14a10ec4d54bb9a8183bc7b40a06d7f8ca7c01a5
   erb (6.0.7) sha256=c5ca6dc25b0ef974a44dc8f59fe847577122483b1968a38dec305c60bf91ee92
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.4.2) sha256=bb555dae668419cb24caa2a293a170e58be6d4df1e017c51f5030bdc133cd20c

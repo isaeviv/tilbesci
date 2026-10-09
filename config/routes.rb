@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "pages#dashboard"
+  get "pages/dashboard"
   resources :translations
   resources :translation_keys
   resources :games
