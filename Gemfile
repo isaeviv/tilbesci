@@ -19,6 +19,12 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Slim template engine [https://github.com/slim-template/slim-rails]
+gem "slim-rails"
+
+# SimpleForm for forms [https://github.com/heartcombo/simple_form]
+gem "simple_form"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -54,6 +60,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # RSpec testing framework [https://rspec.info/]
+  gem "rspec-rails"
 end
 
 group :development do

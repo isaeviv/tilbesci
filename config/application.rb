@@ -23,5 +23,14 @@ module Tilbesci
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Use Slim as default template engine
+    config.app_generators.template_engine :slim
+
+    # Use RSpec as default test framework
+    config.app_generators.test_framework :rspec
+
+    # Configure generators to use SimpleForm
+    config.app_generators.scaffold_controller :scaffold
   end
 end
