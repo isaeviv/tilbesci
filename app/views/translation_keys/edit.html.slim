@@ -1,0 +1,10 @@
+h1 Editing translation key
+
+== render "form", translation_key: @translation_key
+
+br
+
+div
+  => link_to "Show this translation key", @translation_key
+  '|
+  =< link_to "Back to translation keys", translation_keys_path

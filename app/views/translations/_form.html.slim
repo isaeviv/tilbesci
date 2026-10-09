@@ -1,0 +1,13 @@
+= simple_form_for(@translation) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :translation_key_id
+    = f.input :locale
+    = f.input :value
+    = f.input :state
+    = f.input :source
+
+  .form-actions
+    = f.button :submit

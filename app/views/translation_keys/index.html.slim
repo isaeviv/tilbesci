@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Translation keys
+
+#translation_keys
+  - @translation_keys.each do |translation_key|
+    == render translation_key
+    p
+      = link_to "Show this translation key", translation_key
+
+= link_to "New translation key", new_translation_key_path

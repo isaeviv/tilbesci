@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @translation_key
+
+div
+  => link_to "Edit this translation key", edit_translation_key_path(@translation_key)
+  '|
+  =< link_to "Back to translation keys", translation_keys_path
+
+  = button_to "Destroy this translation key", @translation_key, method: :delete
