@@ -29,8 +29,5 @@ module Tilbesci
 
     # Use RSpec as default test framework
     config.app_generators.test_framework :rspec
-
-    # Configure generators to use SimpleForm
-    config.app_generators.scaffold_controller :scaffold
   end
 end
