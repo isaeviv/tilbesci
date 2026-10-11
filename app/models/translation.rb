@@ -23,6 +23,7 @@ class Translation < ApplicationRecord
   extend Enumerize
 
   enumerize :locale, in: [:en, :ru, :kjh, :eo, :isv]
+  enumirize :source, in: [:yandex, :manual]
 
   belongs_to :translation_key
 

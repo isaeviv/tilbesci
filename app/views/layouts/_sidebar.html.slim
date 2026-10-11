@@ -1,0 +1,10 @@
+aside.column.is-2.menu.mt-5
+  p.menu-label
+    = t('navigation.menu')
+  ul.menu-list
+    li
+      = link_to Game.model_name.human(count: 2), games_path
+    li
+      = link_to TranslationKey.model_name.human(count: 2), translation_keys_path
+    li
+      = link_to Translation.model_name.human(count: 2), translations_path

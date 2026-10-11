@@ -1,2 +1,41 @@
-h1 Pages#dashboard
-p Find me in app/views/pages/dashboard.html.slim
+h1.title = t('dashboard.title')
+.columns
+  .column.is-one-third
+    .box.has-background-info-light
+      p.heading = t('dashboard.total_keys')
+      p.title = @total_keys
+  .column.is-one-third
+    .box.has-background-success-light
+      p.heading = t('dashboard.translated_keys')
+      p.title = @translated_keys
+  .column.is-one-third
+    .box.has-background-warning-light
+      p.heading = t('dashboard.pending_keys')
+      p.title = @pending_keys
+.columns
+  .column.is-half
+    .box
+      h2.title.is-4 = t('dashboard.locales_statistics')
+      table.table.is-fullwidth.is-striped
+        thead
+          tr
+            th = t('dashboard.locale')
+            th = t('dashboard.translations_count')
+        tbody
+          - @locales_stats.each do |locale, count|
+            tr
+              td = locale.to_s.upcase
+              td = count
+  .column
+    .box
+      h2.title.is-4 = t('dashboard.games_statistics')
+      table.table.is-fullwidth.is-striped
+        thead
+          tr
+            th = Game.model_name.human
+            th = t('dashboard.keys_count')
+        tbody
+          - @games_stats.each do |game|
+            tr
+              td = game.name
+              td = game.keys_count

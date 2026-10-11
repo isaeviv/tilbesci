@@ -29,3 +29,64 @@
 
 en:
   hello: "Hello world"
+  navigation:
+    menu: "Navigation"
+  dashboard:
+    title: "Dashboard"
+    total_keys: "Total Keys"
+    translated_keys: "Translated"
+    pending_keys: "Pending"
+    locales_statistics: "Locales Statistics"
+    games_statistics: "Games Statistics"
+    locale: "Locale"
+    translations_count: "Translations"
+    keys_count: "Keys"
+  activerecord:
+    models:
+      game:
+        one: Game
+        other: Games
+      translation_key:
+        one: Translation Key
+        other: Translation Keys
+      translation:
+        one: Translation
+        other: Translations
+    attributes:
+      game:
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
+      translation_key:
+        name: Name
+        description: Description
+        state: State
+        translated: Translated
+        game: Game
+        game_id: Game
+        created_at: Created at
+        updated_at: Updated at
+      translation:
+        locale: Locale
+        source: Source
+        state: State
+        value: Value
+        translation_key: Translation Key
+        translation_key_id: Translation Key
+        created_at: Created at
+        updated_at: Updated at
+  enumerize:
+    translation_key:
+      state:
+        pending: Pending
+        translated: Translated
+    translation:
+      locale:
+        en: English
+        ru: Russian
+        kjh: Khakas
+        eo: Esperanto
+        isv: Interslavic
+      source:
+        yandex: Yandex
+        manual: Manual

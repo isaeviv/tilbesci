@@ -1,0 +1,62 @@
+ru:
+  navigation:
+    menu: "Навигация"
+  dashboard:
+    title: "Панель управления"
+    total_keys: "Всего ключей"
+    translated_keys: "Переведено"
+    pending_keys: "Ожидает перевода"
+    locales_statistics: "Статистика по языкам"
+    games_statistics: "Статистика по играм"
+    locale: "Язык"
+    translations_count: "Переводов"
+    keys_count: "Ключей"
+  activerecord:
+    models:
+      game:
+        one: Игра
+        other: Игры
+      translation_key:
+        one: Ключ перевода
+        other: Ключи перевода
+      translation:
+        one: Перевод
+        other: Переводы
+    attributes:
+      game:
+        name: Название
+        created_at: Создано
+        updated_at: Обновлено
+      translation_key:
+        name: Название
+        description: Описание
+        state: Статус
+        translated: Переведено
+        game: Игра
+        game_id: Игра
+        created_at: Создано
+        updated_at: Обновлено
+      translation:
+        locale: Язык
+        source: Источник
+        state: Статус
+        value: Значение
+        translation_key: Ключ перевода
+        translation_key_id: Ключ перевода
+        created_at: Создано
+        updated_at: Обновлено
+  enumerize:
+    translation_key:
+      state:
+        pending: Ожидает перевода
+        translated: Переведено
+    translation:
+      locale:
+        en: Английский
+        ru: Русский
+        kjh: Хакасский
+        eo: Эсперанто
+        isv: Межславянский
+      source:
+        yandex: Яндекс
+        manual: Рукопашный

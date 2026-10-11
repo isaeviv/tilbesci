@@ -1,5 +1,5 @@
 doctype html
-html
+html data-theme="light"
   head
     title = content_for(:title) || "Tilbesci"
     meta name="viewport" content="width=device-width,initial-scale=1"
@@ -22,4 +22,18 @@ html
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    = yield
+    nav.navbar.is-success role="navigation" aria-label="main navigation"
+      .navbar-brand
+        = link_to "Tilbesci", root_path, class: "navbar-item has-text-weight-bold is-size-4"
+      .navbar-end
+        .navbar-item
+          .field.is-grouped
+            .control
+              = link_to "EN", url_for(locale: :en), class: "button is-small #{'is-primary' if I18n.locale == :en}"
+            .control
+              = link_to "RU", url_for(locale: :ru), class: "button is-small #{'is-primary' if I18n.locale == :ru}"
+    
+    .columns.container.is-fullhd
+      = render "layouts/sidebar"
+      section.section.column.is-10
+        = yield

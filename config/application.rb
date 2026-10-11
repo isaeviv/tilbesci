@@ -29,5 +29,9 @@ module Tilbesci
 
     # Use RSpec as default test framework
     config.app_generators.test_framework :rspec
+
+    # Configure available locales
+    config.i18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :ru
   end
 end
