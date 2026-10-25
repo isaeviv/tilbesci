@@ -43,6 +43,9 @@ en:
     keys_count: "Keys"
   activerecord:
     models:
+      batch:
+        one: Batch
+        other: Batches
       game:
         one: Game
         other: Games
@@ -53,6 +56,12 @@ en:
         one: Translation
         other: Translations
     attributes:
+      batch:
+        state: State
+        game: Game
+        game_id: Game
+        created_at: Created at
+        updated_at: Updated at
       game:
         name: Name
         created_at: Created at
@@ -90,3 +99,8 @@ en:
       source:
         yandex: Yandex
         manual: Manual
+    batch:
+      state:
+        pending: Pending
+        in_progress: In Progress
+        translated: Translated

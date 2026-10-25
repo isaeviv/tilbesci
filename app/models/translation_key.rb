@@ -10,12 +10,14 @@
 #  translated  :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  batch_id    :integer
 #  game_id     :integer
 #
 class TranslationKey < ApplicationRecord
   extend Enumerize
 
   belongs_to :game
+  belongs_to :batch, optional: true
   has_many :translations, dependent: :destroy
 
   enumerize :state, in: [:pending, :translated], default: :pending

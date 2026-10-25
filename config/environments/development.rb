@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.factory_bot.definition_file_paths = ["rspec/factories"]
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true

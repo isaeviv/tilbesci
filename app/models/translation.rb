@@ -10,6 +10,7 @@
 #  value              :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  batch_id           :integer
 #  translation_key_id :integer
 #
 # Indexes
@@ -23,9 +24,10 @@ class Translation < ApplicationRecord
   extend Enumerize
 
   enumerize :locale, in: [:en, :ru, :kjh, :eo, :isv]
-  enumirize :source, in: [:yandex, :manual]
+  enumerize :source, in: [:yandex, :manual]
 
   belongs_to :translation_key
+  # belongs_to :batch, optional: true
 
   validates :locale, presence: true
   validates :value, presence: true

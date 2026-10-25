@@ -22,7 +22,16 @@ ru:
       translation:
         one: Перевод
         other: Переводы
+      batch:
+        one: Партия
+        other: Партии
     attributes:
+      batch:
+        state: Статус
+        game: Игра
+        game_id: Игра
+        created_at: Создано
+        updated_at: Обновлено
       game:
         name: Название
         created_at: Создано
@@ -60,3 +69,8 @@ ru:
       source:
         yandex: Яндекс
         manual: Рукопашный
+    batch:
+      state:
+        pending: Ожидает перевода
+        in_progress: В процессе перевода
+        translated: Переведено

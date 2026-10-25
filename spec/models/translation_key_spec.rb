@@ -12,6 +12,7 @@ require 'rails_helper'
 #  translated  :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  batch_id    :integer
 #  game_id     :integer
 #
 RSpec.describe TranslationKey, type: :model do

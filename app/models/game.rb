@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Game < ApplicationRecord
+  has_many :batches, dependent: :destroy
   has_many :translation_keys, dependent: :destroy
   has_many :translations, through: :translation_keys
 

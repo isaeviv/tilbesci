@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     get "pages/dashboard"
     resources :translations
     resources :translation_keys
+    resources :batches do 
+      post :parse, on: :member
+    end
     resources :games
   end
   

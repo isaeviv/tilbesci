@@ -33,5 +33,6 @@ module Tilbesci
     # Configure available locales
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
+    config.i18n.fallbacks = { ru: :en }
   end
 end

@@ -1,8 +1,13 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'enumerize'
 gem "rails", "~> 8.1.4"
+
+gem "json-stream"
+
+gem "faker"
+gem "carrierwave"
+gem "enumerize"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
@@ -63,7 +68,9 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # RSpec testing framework [https://rspec.info/]
+  gem "factory_bot_rails"
   gem "rspec-rails"
+  gem "pry"
 end
 
 group :development do

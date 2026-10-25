@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_150823) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_21_062634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "batches", force: :cascade do |t|
+    t.integer "game_id"
+    t.string "codename"
+    t.string "file"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "source_locale"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -28,6 +38,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_150823) do
     t.boolean "translated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "batch_id"
   end
 
   create_table "translations", force: :cascade do |t|
@@ -38,6 +49,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_150823) do
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "batch_id"
     t.index ["locale", "state"], name: "index_translations_on_locale_and_state"
     t.index ["locale"], name: "index_translations_on_locale"
     t.index ["state"], name: "index_translations_on_state"

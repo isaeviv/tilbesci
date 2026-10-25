@@ -12,6 +12,7 @@ require 'rails_helper'
 #  value              :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  batch_id           :integer
 #  translation_key_id :integer
 #
 # Indexes
