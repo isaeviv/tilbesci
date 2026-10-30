@@ -72,4 +72,9 @@ RSpec.configure do |config|
 
   # Include FactoryBot methods
   config.include FactoryBot::Syntax::Methods
+  
+  # Set default locale for view tests
+  config.before(:each, type: :view) do
+    I18n.locale = :ru
+  end
 end

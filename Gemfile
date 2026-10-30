@@ -31,6 +31,9 @@ gem "slim-rails"
 # SimpleForm for forms [https://github.com/heartcombo/simple_form]
 gem "simple_form"
 
+# Dynamic nested forms [https://github.com/notus-sh/cocooned]
+gem "cocooned"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -40,6 +43,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
 gem "solid_queue"
+gem "solid_queue_monitor"
 gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb

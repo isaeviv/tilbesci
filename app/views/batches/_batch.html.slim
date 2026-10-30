@@ -1,4 +1,4 @@
-div id="#{dom_id batch}"
+.box id="#{dom_id batch}"
   div
     strong Game:
     =< batch.game.name
@@ -6,8 +6,17 @@ div id="#{dom_id batch}"
     strong Codename:
     =< batch.codename
   div
-    strong File:
-    =< batch.file.filename
-  div
     strong State:
     =< batch.state
+  div
+    strong= SourceFile.model_name.human(count: 2)
+    - if batch.source_files.any?
+      ul
+        - batch.source_files.each do |source_file|
+          li
+            =< source_file.file.filename
+            |  (#{source_file.status.humanize})
+    - else
+      =< t('batches.show.no_files')
+  .buttons.mt-3
+    = link_to "Show this batch", batch, class: "button is-rounded"

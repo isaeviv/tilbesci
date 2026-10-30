@@ -2,10 +2,10 @@ class BatchesController < ApplicationController
   before_action :set_batch, only: %i[ parse show edit update destroy ]
 
   def parse
-    if @batch.file.blank?
+    if @batch.source_files.empty? || @batch.source_files.any? { |sf| sf.file.blank? }
       redirect_to @batch, alert: "No file attached for parsing."
     else
-      job = HandleJsonJob.perform_later(@batch.id)
+      job = Parsing::HandleBatchJob.perform_later(@batch.id)
       redirect_to @batch, notice: "Batch parsing has been started. Job id: #{job.job_id}"
     end
   end
@@ -22,10 +22,12 @@ class BatchesController < ApplicationController
   # GET /batches/new
   def new
     @batch = Batch.new
+    @batch.source_files.build
   end
 
   # GET /batches/1/edit
   def edit
+    @batch.source_files.build if @batch.source_files.empty?
   end
 
   # POST /batches or /batches.json
@@ -74,6 +76,6 @@ class BatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def batch_params
-      params.expect(batch: [ :game_id, :file, :state ])
+      params.require(:batch).permit(:game_id, :state, :source_locale, source_files_attributes: [ :id, :file, :_destroy ])
     end
 end

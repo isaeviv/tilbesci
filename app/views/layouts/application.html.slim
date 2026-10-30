@@ -29,9 +29,9 @@ html data-theme="light"
         .navbar-item
           .field.is-grouped
             .control
-              = link_to "EN", url_for(locale: :en), class: "button is-small #{'is-primary' if I18n.locale == :en}"
+              = link_to "EN", url_for(locale: :en), class: "button is-small is-rounded #{'is-primary' if I18n.locale == :en}"
             .control
-              = link_to "RU", url_for(locale: :ru), class: "button is-small #{'is-primary' if I18n.locale == :ru}"
+              = link_to "RU", url_for(locale: :ru), class: "button is-small is-rounded #{'is-primary' if I18n.locale == :ru}"
     
     .columns.container.is-fullhd
       = render "layouts/sidebar"

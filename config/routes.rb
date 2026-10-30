@@ -1,4 +1,8 @@
+require 'solid_queue_monitor'
+
 Rails.application.routes.draw do
+  mount SolidQueueMonitor::Engine => '/solid_queue'
+
   scope "(:locale)", locale: /en|ru/ do
     root "pages#dashboard"
     get "pages/dashboard"

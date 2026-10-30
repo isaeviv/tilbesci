@@ -1,11 +1,10 @@
 p style="color: green" = notice
-
-h1 = Batch.model_name.human(count: 2)
+h1.title
+  = Batch.model_name.human(count: 2)
+.my-3
+  = link_to "New batch", new_batch_path, class: "button is-primary is-rounded"
 
 #batches
   - @batches.each do |batch|
     == render batch
-    p
-      = link_to "Show this batch", batch
 
-= link_to "New batch", new_batch_path, class: "button is-primary"

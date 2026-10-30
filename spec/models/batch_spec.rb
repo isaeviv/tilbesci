@@ -7,7 +7,6 @@ require 'rails_helper'
 #
 #  id            :bigint           not null, primary key
 #  codename      :string
-#  file          :string
 #  source_locale :string
 #  state         :string
 #  created_at    :datetime         not null

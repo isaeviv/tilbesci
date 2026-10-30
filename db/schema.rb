@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_062634) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_25_123141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "batches", force: :cascade do |t|
     t.integer "game_id"
     t.string "codename"
-    t.string "file"
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,6 +29,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_062634) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "source_files", force: :cascade do |t|
+    t.bigint "batch_id", null: false
+    t.string "file"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_source_files_on_batch_id"
+  end
+
   create_table "translation_keys", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -39,6 +47,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_062634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "batch_id"
+    t.bigint "source_file_id"
+    t.index ["source_file_id"], name: "index_translation_keys_on_source_file_id"
   end
 
   create_table "translations", force: :cascade do |t|
@@ -55,4 +65,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_062634) do
     t.index ["state"], name: "index_translations_on_state"
     t.index ["translation_key_id", "locale"], name: "index_translations_on_translation_key_id_and_locale", unique: true
   end
+
+  add_foreign_key "source_files", "batches"
+  add_foreign_key "translation_keys", "source_files"
 end

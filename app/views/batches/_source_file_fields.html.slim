@@ -1,0 +1,7 @@
+= cocooned_item do
+  .nested-fields.box.mb-3
+    .field
+      = f.label :file, class: 'label'
+      .control
+        = f.file_field :file
+    = cocooned_remove_item_link t('batches.forms.remove_file'), f, class: 'button is-danger is-small is-rounded'

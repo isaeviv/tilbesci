@@ -1,12 +1,43 @@
-= simple_form_for(@batch) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  .block.has-background-danger-light
-    = f.input :game_id, collection: Game.all.map { |game| [game.name, game.id] }, label_method: :first, value_method: :last
-  .block.has-background-primary-light
-    = f.input :file, as: :file
-  .block
-    = f.input :state
+= form_with(model: @batch) do |f|
+  - if @batch.errors.any?
+    .message.is-danger
+      .message-header
+        p = t('errors.messages.not_saved', count: @batch.errors.count, resource: @batch.class.model_name.human)
+      .message-body
+        ul
+          - @batch.errors.full_messages.each do |message|
+            li = message
 
   .block
-    = f.button :submit
+    .field
+      = f.label :game_id, class: 'label'
+      .control
+        .select
+          = f.collection_select :game_id, Game.all, :id, :name, { include_blank: true }
+
+  .block
+    = cocooned_container do
+      = f.fields_for :source_files do |sf|
+        = render 'source_file_fields', f: sf
+      .links
+        = cocooned_add_item_link t('batches.forms.add_file'), f, :source_files, class: 'button is-link is-small is-rounded'
+
+  .block
+    .field
+      = f.label :state, class: 'label'
+      .control
+        .select
+          = f.select :state, Batch.state.options, {}
+  .block
+    .field
+      = f.label :source_locale, class: 'label'
+      .control
+        .select
+          = f.select :source_locale, Batch.source_locale.options, {}
+
+  .block
+    .field
+      .control.buttons
+        = f.submit class: 'button is-primary is-rounded'
+        = link_to @batch.codename, batch_path(@batch), class: 'button is-link is-rounded'
+        = link_to t('batches.forms.back_to_batches'), batches_path, class: 'button is-link is-light is-rounded'

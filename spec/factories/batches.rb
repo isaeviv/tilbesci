@@ -5,7 +5,6 @@
 #
 #  id            :bigint           not null, primary key
 #  codename      :string
-#  file          :string
 #  source_locale :string
 #  state         :string
 #  created_at    :datetime         not null
@@ -15,7 +14,6 @@
 FactoryBot.define do
   factory :batch do
     association :game
-    file { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'parsing', 'example.json'), 'text/json') }
     state { "pending" }
     source_locale { "en" }
   end

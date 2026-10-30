@@ -11,6 +11,12 @@ ru:
     locale: "Язык"
     translations_count: "Переводов"
     keys_count: "Ключей"
+  batches:
+    forms:
+      add_file: "Добавить файл"
+      remove_file: "Удалить"
+    show:
+      no_files: "Нет файлов"
   activerecord:
     models:
       game:
@@ -25,6 +31,9 @@ ru:
       batch:
         one: Партия
         other: Партии
+      source_file:
+        one: Исходный файл
+        other: Исходные файлы
     attributes:
       batch:
         state: Статус
@@ -54,6 +63,13 @@ ru:
         translation_key_id: Ключ перевода
         created_at: Создано
         updated_at: Обновлено
+      source_file:
+        file: Файл
+        status: Статус
+        batch: Партия
+        batch_id: Партия
+        created_at: Создано
+        updated_at: Обновлено
   enumerize:
     translation_key:
       state:
@@ -74,3 +90,9 @@ ru:
         pending: Ожидает перевода
         in_progress: В процессе перевода
         translated: Переведено
+    source_file:
+      status:
+        pending: Ожидает обработки
+        processing: Обрабатывается
+        processed: Обработан
+        failed: Ошибка обработки
