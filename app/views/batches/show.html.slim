@@ -3,7 +3,7 @@ p style="color: green" = notice
 == render @batch
 
 div
-  = button_to "Parse this batch", parse_batch_path(@batch), method: :post, class: 'is-warning'
-  = link_to "Edit this batch", edit_batch_path(@batch)
-  = link_to "Back to batches", batches_path
-  = button_to "Destroy this batch", @batch, method: :delete
+  = button_to t(".parse"), parse_batch_path(@batch), method: :post, class: 'button is-warning is-rounded'
+  = link_to t(".edit"), edit_batch_path(@batch), class: "button is-link is-rounded"
+  = link_to t(".back"), batches_path, class: "button is-link is-light is-rounded"
+  = button_to t(".destroy"), @batch, method: :delete, class: "button is-danger is-rounded"

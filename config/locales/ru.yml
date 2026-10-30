@@ -1,6 +1,9 @@
 ru:
+  app_name: "Тилбески"
+
   navigation:
     menu: "Навигация"
+
   dashboard:
     title: "Панель управления"
     total_keys: "Всего ключей"
@@ -11,12 +14,128 @@ ru:
     locale: "Язык"
     translations_count: "Переводов"
     keys_count: "Ключей"
+
+  shared:
+    open: Открыть
+    delete: Удалить
+
   batches:
     forms:
       add_file: "Добавить файл"
       remove_file: "Удалить"
+    create:
+      notice: "Партия успешно создана."
+    update:
+      notice: "Партия успешно обновлена."
+    destroy:
+      notice: "Партия успешно удалена."
+    parse:
+      alert: "Нет файла для парсинга."
+      notice: "Парсинг партии начат. ID задачи: %{job_id}"
+    index:
+      title: "Партии"
+      new: "Новая партия"
     show:
-      no_files: "Нет файлов"
+      parse: "Распарсить партию"
+      edit: "Редактировать партию"
+      back: "Назад к партиям"
+      destroy: "Удалить партию"
+    new:
+      title: "Новая партия"
+      back: "Назад к партиям"
+    edit:
+      title: "Редактирование партии"
+    form:
+      back: "Назад к партиям"
+    batch:
+      game: "Игра"
+      codename: "Кодовое имя"
+      state: "Статус"
+      show: "Показать партию"
+
+  games:
+    create:
+      notice: "Игра успешно создана."
+    update:
+      notice: "Игра успешно обновлена."
+    destroy:
+      notice: "Игра успешно удалена."
+    index:
+      title: "Игры"
+      new: "Новая игра"
+      show: "Показать игру"
+    show:
+      edit: "Редактировать игру"
+      back: "Назад к играм"
+      destroy: "Удалить игру"
+    new:
+      title: "Новая игра"
+      back: "Назад к играм"
+    edit:
+      title: "Редактирование игры"
+      show: "Показать игру"
+      back: "Назад к играм"
+    game:
+      name: "Название"
+
+  translation_keys:
+    create:
+      notice: "Ключ перевода успешно создан."
+    update:
+      notice: "Ключ перевода успешно обновлён."
+    destroy:
+      notice: "Ключ перевода успешно удалён."
+    index:
+      title: "Ключи перевода"
+      new: "Новый ключ перевода"
+      show: "Показать ключ перевода"
+    show:
+      edit: "Редактировать ключ перевода"
+      back: "Назад к ключам перевода"
+      destroy: "Удалить ключ перевода"
+    new:
+      title: "Новый ключ перевода"
+      back: "Назад к ключам перевода"
+    edit:
+      title: "Редактирование ключа перевода"
+      show: "Показать ключ перевода"
+      back: "Назад к ключам перевода"
+    translation_key:
+      name: "Название"
+      description: "Описание"
+      state: "Статус"
+      game: "Игра"
+      translated: "Переведено"
+
+  translations:
+    create:
+      notice: "Перевод успешно создан."
+    update:
+      notice: "Перевод успешно обновлён."
+    destroy:
+      notice: "Перевод успешно удалён."
+    index:
+      title: "Переводы"
+      new: "Новый перевод"
+      show: "Показать перевод"
+    show:
+      edit: "Редактировать перевод"
+      back: "Назад к переводам"
+      destroy: "Удалить перевод"
+    new:
+      title: "Новый перевод"
+      back: "Назад к переводам"
+    edit:
+      title: "Редактирование перевода"
+      show: "Показать перевод"
+      back: "Назад к переводам"
+    translation:
+      translation_key: "Ключ перевода"
+      locale: "Язык"
+      value: "Значение"
+      state: "Статус"
+      source: "Источник"
+
   activerecord:
     models:
       game:
@@ -70,6 +189,7 @@ ru:
         batch_id: Партия
         created_at: Создано
         updated_at: Обновлено
+
   enumerize:
     translation_key:
       state:

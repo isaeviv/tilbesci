@@ -1,11 +1,11 @@
 p style="color: green" = notice
 
-h1 Translation keys
+h1.title = t(".title")
 
 #translation_keys
   - @translation_keys.each do |translation_key|
     == render translation_key
     p
-      = link_to "Show this translation key", translation_key
+      = link_to t(".show"), translation_key, class: "button is-rounded"
 
-= link_to "New translation key", new_translation_key_path
+= link_to t(".new"), new_translation_key_path, class: "button is-primary is-rounded"

@@ -1,36 +1,9 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  app_name: "Tilbesci"
+
   navigation:
     menu: "Navigation"
+
   dashboard:
     title: "Dashboard"
     total_keys: "Total Keys"
@@ -41,12 +14,127 @@ en:
     locale: "Locale"
     translations_count: "Translations"
     keys_count: "Keys"
+  shared:
+    open: Open
+    delete: Delete
+
   batches:
     forms:
       add_file: "Add file"
       remove_file: "Remove"
+    create:
+      notice: "Batch was successfully created."
+    update:
+      notice: "Batch was successfully updated."
+    destroy:
+      notice: "Batch was successfully destroyed."
+    parse:
+      alert: "No file attached for parsing."
+      notice: "Batch parsing has been started. Job id: %{job_id}"
+    index:
+      title: "Batches"
+      new: "New batch"
     show:
-      no_files: "No files"
+      parse: "Parse this batch"
+      edit: "Edit this batch"
+      back: "Back to batches"
+      destroy: "Destroy this batch"
+    new:
+      title: "New batch"
+      back: "Back to batches"
+    edit:
+      title: "Editing batch"
+    form:
+      back: "Back to batches"
+    batch:
+      game: "Game"
+      codename: "Codename"
+      state: "State"
+      show: "Show this batch"
+
+  games:
+    create:
+      notice: "Game was successfully created."
+    update:
+      notice: "Game was successfully updated."
+    destroy:
+      notice: "Game was successfully destroyed."
+    index:
+      title: "Games"
+      new: "New game"
+      show: "Show this game"
+    show:
+      edit: "Edit this game"
+      back: "Back to games"
+      destroy: "Destroy this game"
+    new:
+      title: "New game"
+      back: "Back to games"
+    edit:
+      title: "Editing game"
+      show: "Show this game"
+      back: "Back to games"
+    game:
+      name: "Name"
+
+  translation_keys:
+    create:
+      notice: "Translation key was successfully created."
+    update:
+      notice: "Translation key was successfully updated."
+    destroy:
+      notice: "Translation key was successfully destroyed."
+    index:
+      title: "Translation keys"
+      new: "New translation key"
+      show: "Show this translation key"
+    show:
+      edit: "Edit this translation key"
+      back: "Back to translation keys"
+      destroy: "Destroy this translation key"
+    new:
+      title: "New translation key"
+      back: "Back to translation keys"
+    edit:
+      title: "Editing translation key"
+      show: "Show this translation key"
+      back: "Back to translation keys"
+    translation_key:
+      name: "Name"
+      description: "Description"
+      state: "State"
+      game: "Game"
+      translated: "Translated"
+
+  translations:
+    create:
+      notice: "Translation was successfully created."
+    update:
+      notice: "Translation was successfully updated."
+    destroy:
+      notice: "Translation was successfully destroyed."
+    index:
+      title: "Translations"
+      new: "New translation"
+      show: "Show this translation"
+    show:
+      edit: "Edit this translation"
+      back: "Back to translations"
+      destroy: "Destroy this translation"
+    new:
+      title: "New translation"
+      back: "Back to translations"
+    edit:
+      title: "Editing translation"
+      show: "Show this translation"
+      back: "Back to translations"
+    translation:
+      translation_key: "Translation key"
+      locale: "Locale"
+      value: "Value"
+      state: "State"
+      source: "Source"
+
   activerecord:
     models:
       batch:
@@ -100,6 +188,7 @@ en:
         batch_id: Batch
         created_at: Created at
         updated_at: Updated at
+
   enumerize:
     translation_key:
       state:

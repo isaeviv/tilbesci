@@ -1,10 +1,9 @@
-h1 Editing translation key
+h1.title = t(".title")
 
 == render "form", translation_key: @translation_key
 
 br
 
 div
-  => link_to "Show this translation key", @translation_key
-  '|
-  =< link_to "Back to translation keys", translation_keys_path
+  = link_to t(".show"), @translation_key, class: "button is-link is-rounded"
+  = link_to t(".back"), translation_keys_path, class: "button is-link is-light is-rounded"

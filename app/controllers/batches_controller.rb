@@ -3,10 +3,10 @@ class BatchesController < ApplicationController
 
   def parse
     if @batch.source_files.empty? || @batch.source_files.any? { |sf| sf.file.blank? }
-      redirect_to @batch, alert: "No file attached for parsing."
+      redirect_to @batch, alert: t(".alert")
     else
       job = Parsing::HandleBatchJob.perform_later(@batch.id)
-      redirect_to @batch, notice: "Batch parsing has been started. Job id: #{job.job_id}"
+      redirect_to @batch, notice: t(".notice", job_id: job.job_id)
     end
   end
 
@@ -36,7 +36,7 @@ class BatchesController < ApplicationController
 
     respond_to do |format|
       if @batch.save
-        format.html { redirect_to @batch, notice: "Batch was successfully created." }
+        format.html { redirect_to @batch, notice: t(".notice") }
         format.json { render :show, status: :created, location: @batch }
       else
         format.html { render :new, status: :unprocessable_content }
@@ -49,7 +49,7 @@ class BatchesController < ApplicationController
   def update
     respond_to do |format|
       if @batch.update(batch_params)
-        format.html { redirect_to @batch, notice: "Batch was successfully updated.", status: :see_other }
+        format.html { redirect_to @batch, notice: t(".notice"), status: :see_other }
         format.json { render :show, status: :ok, location: @batch }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -63,7 +63,7 @@ class BatchesController < ApplicationController
     @batch.destroy!
 
     respond_to do |format|
-      format.html { redirect_to batches_path, notice: "Batch was successfully destroyed.", status: :see_other }
+      format.html { redirect_to batches_path, notice: t(".notice"), status: :see_other }
       format.json { head :no_content }
     end
   end

@@ -1,10 +1,10 @@
 p style="color: green" = notice
-h1.title
-  = Batch.model_name.human(count: 2)
+
+h1.title = t(".title")
+
 .my-3
-  = link_to "New batch", new_batch_path, class: "button is-primary is-rounded"
+  = link_to t(".new"), new_batch_path, class: "button is-primary is-rounded"
 
 #batches
   - @batches.each do |batch|
     == render batch
-

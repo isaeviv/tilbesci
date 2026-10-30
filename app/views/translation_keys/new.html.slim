@@ -1,8 +1,8 @@
-h1 New translation key
+h1.title = t(".title")
 
 == render "form", translation_key: @translation_key
 
 br
 
 div
-  = link_to "Back to translation keys", translation_keys_path
+  = link_to t(".back"), translation_keys_path, class: "button is-link is-light is-rounded"

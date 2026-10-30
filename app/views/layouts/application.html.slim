@@ -1,7 +1,7 @@
 doctype html
 html data-theme="light"
   head
-    title = content_for(:title) || "Tilbesci"
+    title = content_for(:title) || t("app_name")
     meta name="viewport" content="width=device-width,initial-scale=1"
     meta name="apple-mobile-web-app-capable" content="yes"
     meta name="application-name" content="Tilbesci"
@@ -24,7 +24,7 @@ html data-theme="light"
   body
     nav.navbar.is-success role="navigation" aria-label="main navigation"
       .navbar-brand
-        = link_to "Tilbesci", root_path, class: "navbar-item has-text-weight-bold is-size-4"
+        = link_to t("app_name"), root_path, class: "navbar-item has-text-weight-bold is-size-4"
       .navbar-end
         .navbar-item
           .field.is-grouped
@@ -32,7 +32,7 @@ html data-theme="light"
               = link_to "EN", url_for(locale: :en), class: "button is-small is-rounded #{'is-primary' if I18n.locale == :en}"
             .control
               = link_to "RU", url_for(locale: :ru), class: "button is-small is-rounded #{'is-primary' if I18n.locale == :ru}"
-    
+
     .columns.container.is-fullhd
       = render "layouts/sidebar"
       section.section.column.is-10

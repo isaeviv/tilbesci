@@ -2,9 +2,7 @@ p style="color: green" = notice
 
 == render @translation_key
 
-div
-  => link_to "Edit this translation key", edit_translation_key_path(@translation_key)
-  '|
-  =< link_to "Back to translation keys", translation_keys_path
-
-  = button_to "Destroy this translation key", @translation_key, method: :delete
+div.buttons
+  = link_to t(".edit"), edit_translation_key_path(@translation_key), class: "button is-link is-rounded"
+  = link_to t(".back"), translation_keys_path, class: "button is-link is-light is-rounded"
+  = button_to t(".destroy"), @translation_key, method: :delete, class: "button is-danger is-rounded"

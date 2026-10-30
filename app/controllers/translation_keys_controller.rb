@@ -25,7 +25,7 @@ class TranslationKeysController < ApplicationController
 
     respond_to do |format|
       if @translation_key.save
-        format.html { redirect_to @translation_key, notice: "Translation key was successfully created." }
+        format.html { redirect_to @translation_key, notice: t(".notice") }
         format.json { render :show, status: :created, location: @translation_key }
       else
         format.html { render :new, status: :unprocessable_content }
@@ -38,7 +38,7 @@ class TranslationKeysController < ApplicationController
   def update
     respond_to do |format|
       if @translation_key.update(translation_key_params)
-        format.html { redirect_to @translation_key, notice: "Translation key was successfully updated.", status: :see_other }
+        format.html { redirect_to @translation_key, notice: t(".notice"), status: :see_other }
         format.json { render :show, status: :ok, location: @translation_key }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -52,7 +52,7 @@ class TranslationKeysController < ApplicationController
     @translation_key.destroy!
 
     respond_to do |format|
-      format.html { redirect_to translation_keys_path, notice: "Translation key was successfully destroyed.", status: :see_other }
+      format.html { redirect_to translation_keys_path, notice: t(".notice"), status: :see_other }
       format.json { head :no_content }
     end
   end
