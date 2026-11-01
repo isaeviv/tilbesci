@@ -4,5 +4,5 @@ p style="color: green" = notice
 
 div.buttons
   = link_to t(".edit"), edit_translation_key_path(@translation_key), class: "button is-link is-rounded"
-  = link_to t(".back"), translation_keys_path, class: "button is-link is-light is-rounded"
   = button_to t(".destroy"), @translation_key, method: :delete, class: "button is-danger is-rounded"
+  = link_to t(".back"), translation_keys_path, class: "button is-link is-light is-rounded"

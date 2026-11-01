@@ -1,11 +1,57 @@
-= simple_form_for(@<%= singular_table_name %>) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+= form_with(model: @<%= singular_table_name %>) do |f|
+  - if @<%= singular_table_name %>.errors.any?
+    .message.is-danger
+      .message-header
+        p = t('errors.messages.not_saved', count: @<%= singular_table_name %>.errors.count, resource: @<%= singular_table_name %>.class.model_name.human)
+      .message-body
+        ul
+          - @<%= singular_table_name %>.errors.full_messages.each do |message|
+            li = message
 
-  .form-inputs
 <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+  - if attribute.reference?
+    .field
+      = f.label :<%= attribute.column_name %>, class: 'label'
+      .control
+        .select
+          = f.collection_select :<%= attribute.column_name %>, <%= attribute.type.to_s.camelize %>.all, :id, :name, { include_blank: true }
+  - elsif attribute.type == :text
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.text_area :<%= attribute.name %>, class: 'textarea'
+  - elsif attribute.type == :boolean
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.check_box :<%= attribute.name %>, class: 'checkbox'
+  - elsif attribute.type == :date
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.date_field :<%= attribute.name %>, class: 'input'
+  - elsif attribute.type == :datetime || attribute.type == :timestamp
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.datetime_field :<%= attribute.name %>, class: 'input'
+  - elsif attribute.type == :integer || attribute.type == :float || attribute.type == :decimal
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.number_field :<%= attribute.name %>, class: 'input'
+  - elsif attribute.type == :password
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.password_field :<%= attribute.name %>, class: 'input'
+  - else
+    .field
+      = f.label :<%= attribute.name %>, class: 'label'
+      .control
+        = f.text_field :<%= attribute.name %>, class: 'input'
 <%- end -%>
 
-  .form-actions
-    = f.button :submit
+  .field
+    .control
+      = f.submit class: 'button is-primary is-rounded'

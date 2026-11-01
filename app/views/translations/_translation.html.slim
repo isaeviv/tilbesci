@@ -1,4 +1,5 @@
-div id="#{dom_id translation}"
+.box.is-relative.is-clickable id="#{dom_id translation}"
+  = link_to "", translation, class: "is-overlay" 
   div
     strong #{t(".translation_key")}:
     =< translation.translation_key_id

@@ -1,9 +1,18 @@
-= simple_form_for(@game) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+= form_with(model: @game) do |f|
+  - if @game.errors.any?
+    .message.is-danger
+      .message-header
+        p = t('errors.messages.not_saved', count: @game.errors.count, resource: @game.class.model_name.human)
+      .message-body
+        ul
+          - @game.errors.full_messages.each do |message|
+            li = message
 
-  .form-inputs
-    = f.input :name
+  .field
+    = f.label :name, class: 'label'
+    .control
+      = f.text_field :name, class: 'input'
 
-  .form-actions
-    = f.button :submit
+  .field
+    .control
+      = f.submit class: 'button is-primary is-rounded'

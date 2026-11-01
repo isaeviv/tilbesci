@@ -1,4 +1,5 @@
-.box id="#{dom_id batch}"
+.box.is-relative.is-clickable id="#{dom_id batch}"
+  = link_to "", batch, class: "is-overlay"
   div
     strong #{t(".game")}:
     =< batch.game.name
@@ -18,5 +19,3 @@
             |  (#{source_file.status.text})
     - else
       =< t('batches.show.no_files')
-  .buttons.mt-3
-    = link_to t(".show"), batch, class: "button is-rounded"

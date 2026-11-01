@@ -28,9 +28,6 @@ gem "jbuilder"
 # Slim template engine [https://github.com/slim-template/slim-rails]
 gem "slim-rails"
 
-# SimpleForm for forms [https://github.com/heartcombo/simple_form]
-gem "simple_form"
-
 # Dynamic nested forms [https://github.com/notus-sh/cocooned]
 gem "cocooned"
 

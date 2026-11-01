@@ -1,4 +1,5 @@
-div id="#{dom_id game}"
+.box.is-relative.is-clickable id="#{dom_id game}"
+  = link_to "", game, class: "is-overlay"
   div
     strong #{t(".name")}:
     =< game.name

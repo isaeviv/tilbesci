@@ -1,13 +1,42 @@
-= simple_form_for(@translation) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+= form_with(model: @translation) do |f|
+  - if @translation.errors.any?
+    .message.is-danger
+      .message-header
+        p = t('errors.messages.not_saved', count: @translation.errors.count, resource: @translation.class.model_name.human)
+      .message-body
+        ul
+          - @translation.errors.full_messages.each do |message|
+            li = message
 
-  .form-inputs
-    = f.input :translation_key_id
-    = f.input :locale
-    = f.input :value
-    = f.input :state
-    = f.input :source
+  .field
+    = f.label :translation_key_id, class: 'label'
+    .control
+      .select
+        = f.collection_select :translation_key_id, TranslationKey.all, :id, :name, { include_blank: true }
 
-  .form-actions
-    = f.button :submit
+  .field
+    = f.label :locale, class: 'label'
+    .control
+      .select
+        = f.select :locale, Translation.locale.options, { include_blank: true }
+
+  .field
+    = f.label :value, class: 'label'
+    .control
+      = f.text_area :value, class: 'textarea'
+
+  .field
+    = f.label :state, class: 'label'
+    .control
+      .select
+        = f.select :state, Translation.state.options, { include_blank: true }
+
+  .field
+    = f.label :source, class: 'label'
+    .control
+      .select
+        = f.select :source, Translation.source.options, { include_blank: true }
+
+  .field
+    .control
+      = f.submit class: 'button is-primary is-rounded'

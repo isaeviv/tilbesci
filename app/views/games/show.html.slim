@@ -4,5 +4,5 @@ p style="color: green" = notice
 
 div.buttons
   = link_to t(".edit"), edit_game_path(@game), class: "button is-link is-rounded"
-  = link_to t(".back"), games_path, class: "button is-link is-light is-rounded"
   = button_to t(".destroy"), @game, method: :delete, class: "button is-danger is-rounded"
+  = link_to t(".back"), games_path, class: "button is-link is-light is-rounded"

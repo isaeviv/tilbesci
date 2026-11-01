@@ -1,13 +1,40 @@
-= simple_form_for(@translation_key) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+= form_with(model: @translation_key) do |f|
+  - if @translation_key.errors.any?
+    .message.is-danger
+      .message-header
+        p = t('errors.messages.not_saved', count: @translation_key.errors.count, resource: @translation_key.class.model_name.human)
+      .message-body
+        ul
+          - @translation_key.errors.full_messages.each do |message|
+            li = message
 
-  .form-inputs
-    = f.input :name
-    = f.input :description
-    = f.input :state
-    = f.input :game_id
-    = f.input :translated
+  .field
+    = f.label :name, class: 'label'
+    .control
+      = f.text_field :name, class: 'input'
 
-  .form-actions
-    = f.button :submit
+  .field
+    = f.label :description, class: 'label'
+    .control
+      = f.text_area :description, class: 'textarea'
+
+  .field
+    = f.label :state, class: 'label'
+    .control
+      .select
+        = f.select :state, TranslationKey.state.options, { include_blank: true }
+
+  .field
+    = f.label :game_id, class: 'label'
+    .control
+      .select
+        = f.collection_select :game_id, Game.all, :id, :name, { include_blank: true }
+
+  .field
+    = f.label :translated, class: 'label'
+    .control
+      = f.check_box :translated, class: 'checkbox'
+
+  .field
+    .control
+      = f.submit class: 'button is-primary is-rounded'

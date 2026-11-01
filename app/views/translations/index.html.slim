@@ -5,7 +5,5 @@ h1.title = t(".title")
 #translations
   - @translations.each do |translation|
     == render translation
-    p
-      = link_to t(".show"), translation, class: "button is-rounded"
 
 = link_to t(".new"), new_translation_path, class: "button is-primary is-rounded"

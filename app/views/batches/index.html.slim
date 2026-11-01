@@ -1,9 +1,9 @@
 p style="color: green" = notice
-
-h1.title = t(".title")
-
-.my-3
-  = link_to t(".new"), new_batch_path, class: "button is-primary is-rounded"
+.columns
+  .column.is-four-fifths
+    h1.title = t(".title")
+  .column
+    = link_to t(".new"), new_batch_path, class: "button is-primary is-rounded is-pulled-right"
 
 #batches
   - @batches.each do |batch|

@@ -22,9 +22,9 @@ html data-theme="light"
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    nav.navbar.is-success role="navigation" aria-label="main navigation"
+    nav.navbar.has-background-primary-15 role="navigation" aria-label="main navigation"
       .navbar-brand
-        = link_to t("app_name"), root_path, class: "navbar-item has-text-weight-bold is-size-4"
+        = link_to t("app_name"), root_path, class: "navbar-item has-text-weight-bold has-text-light is-size-4"
       .navbar-end
         .navbar-item
           .field.is-grouped
