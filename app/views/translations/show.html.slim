@@ -1,6 +1,18 @@
 p style="color: green" = notice
 
-== render @translation
+.box id="#{dom_id @translation}"
+  span.is-pulled-right
+    = locale_tag @translation.locale
+  .block
+    h5.title.is-5.mb-1
+      = @translation.value
+  h6.subtitle.is-6.mb-1
+    strong #{t(".translation_key")}:
+    = link_to @translation.translation_key.name, @translation.translation_key
+  div
+    strong #{t(".source")}:
+    = @translation.source
+
 
 div.buttons
   = link_to t(".edit"), edit_translation_path(@translation), class: "button is-link is-rounded"

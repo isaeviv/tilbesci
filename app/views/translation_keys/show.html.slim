@@ -1,6 +1,21 @@
 p style="color: green" = notice
 
-== render @translation_key
+.box id="#{dom_id @translation_key}"
+  .block
+    h3.title.is-5.mb-1
+      = @translation_key.name
+      span.is-pulled-right
+        = state_tag_for @translation_key
+  - if @translation_key.description
+    div
+      strong #{t(".description")}:
+      =< @translation_key.description
+
+  div
+    strong #{t(".game")}:
+
+    = link_to @translation_key.game.name, @translation_key.game
+
 
 div.buttons
   = link_to t(".edit"), edit_translation_key_path(@translation_key), class: "button is-link is-rounded"
