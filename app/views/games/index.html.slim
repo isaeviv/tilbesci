@@ -5,6 +5,9 @@ p style="color: green" = notice
   .column
     = link_to t(".new"), new_game_path, class: "button is-primary is-rounded is-pulled-right"
 
+== @pagy.series_nav(:bulma)
 #games
   - @games.each do |game|
     == render game
+.mt-5
+  == @pagy.series_nav(:bulma)

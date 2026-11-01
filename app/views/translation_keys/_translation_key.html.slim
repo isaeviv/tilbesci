@@ -1,18 +1,12 @@
 .box.is-relative.is-clickable id="#{dom_id translation_key}"
   = link_to "", translation_key, class: "is-overlay"
-  div
-    strong #{t(".name")}:
-    =< translation_key.name
+  h3.title.is-5.mb-1
+    = translation_key.name
+    span.tag.is-warning.mx-3
+      =translation_key.state_text
   div
     strong #{t(".description")}:
     =< translation_key.description
   div
-    strong #{t(".state")}:
-    span.tag.is-warning
-      =translation_key.state_text
-  div
     strong #{t(".game")}:
     = translation_key.game_id
-  div
-    strong #{t(".translated")}:
-    =< translation_key.translated

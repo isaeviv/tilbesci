@@ -5,6 +5,10 @@ p style="color: green" = notice
   .column
     = link_to t(".new"), new_batch_path, class: "button is-primary is-rounded is-pulled-right"
 
+== @pagy.series_nav(:bulma)
+
 #batches
   - @batches.each do |batch|
     == render batch
+.mt-5
+  == @pagy.series_nav(:bulma)

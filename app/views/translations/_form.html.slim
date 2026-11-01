@@ -26,12 +26,6 @@
       = f.text_area :value, class: 'textarea'
 
   .field
-    = f.label :state, class: 'label'
-    .control
-      .select
-        = f.select :state, Translation.state.options, { include_blank: true }
-
-  .field
     = f.label :source, class: 'label'
     .control
       .select

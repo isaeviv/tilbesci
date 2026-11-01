@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    @pagy, @games = pagy(:offset, Game.all, limit: 20)
   end
 
   # GET /games/1 or /games/1.json

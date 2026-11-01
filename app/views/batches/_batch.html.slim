@@ -1,11 +1,10 @@
 .box.is-relative.is-clickable id="#{dom_id batch}"
   = link_to "", batch, class: "is-overlay"
+  h5.title.is-5.mb-1
+    = batch.codename
   div
     strong #{t(".game")}:
-    =< batch.game.name
-  div
-    strong #{t(".codename")}:
-    =< batch.codename
+    = batch.game.name
   div
     strong #{t(".state")}:
     =< batch.state

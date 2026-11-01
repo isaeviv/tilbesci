@@ -1,9 +1,15 @@
 p style="color: green" = notice
 
-h1.title = t(".title")
+.columns
+  .column.is-four-fifths
+    h1.title = t(".title")
+  .column
+    = link_to t(".new"), new_translation_path, class: "button is-primary is-rounded is-pulled-right"
 
+== @pagy.series_nav(:bulma)
 #translations
   - @translations.each do |translation|
     == render translation
+.mt-5
+  == @pagy.series_nav(:bulma)
 
-= link_to t(".new"), new_translation_path, class: "button is-primary is-rounded"
