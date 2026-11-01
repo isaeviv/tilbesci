@@ -50,3 +50,13 @@ import("@notus.sh/cocooned").then(({ default: Cocooned }) => {
     Cocooned.start()
   })
 })
+
+document.addEventListener('"turbo:load"', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    const $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});

@@ -1,4 +1,7 @@
-p style="color: green" = notice
+- if notice
+  .notification.is-success
+    span.delete.is-pulled-right.is-clickable
+    = notice
 
 == render @batch
 

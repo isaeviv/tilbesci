@@ -1,5 +1,8 @@
 = cocooned_item do
   .nested-fields.box.mb-3
+    - if f.object.persisted? && f.object.file.present?
+      span.label
+        = f.object.file.file.filename rescue nil
     .field
       = f.label :file, class: 'label'
       .control

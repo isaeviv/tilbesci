@@ -2,19 +2,17 @@
   = link_to "", batch, class: "is-overlay"
   h5.title.is-5.mb-1
     = batch.codename
+    = state_tag_for batch
   div
     strong #{t(".game")}:
     = batch.game.name
-  div
-    strong #{t(".state")}:
-    =< batch.state
   div
     strong= SourceFile.model_name.human(count: 2)
     - if batch.source_files.any?
       ul
         - batch.source_files.each do |source_file|
           li
-            =< source_file.file.filename
+            = source_file.file.file.filename
             |  (#{source_file.status.text})
     - else
-      =< t('batches.show.no_files')
+      = t('batches.show.no_files')

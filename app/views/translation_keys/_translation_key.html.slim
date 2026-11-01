@@ -2,11 +2,12 @@
   = link_to "", translation_key, class: "is-overlay"
   h3.title.is-5.mb-1
     = translation_key.name
-    span.tag.is-warning.mx-3
-      =translation_key.state_text
-  div
-    strong #{t(".description")}:
-    =< translation_key.description
+    = state_tag_for translation_key
+  - if translation_key.description
+    div
+      strong #{t(".description")}:
+      =< translation_key.description
+  
   div
     strong #{t(".game")}:
-    = translation_key.game_id
+    = translation_key.game.name

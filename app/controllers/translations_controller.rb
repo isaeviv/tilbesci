@@ -3,7 +3,7 @@ class TranslationsController < ApplicationController
 
   # GET /translations or /translations.json
   def index
-    @pagy, @translations = pagy(:offset, Translation.all, limit: 20)
+    @pagy, @translations = pagy(:offset, Translation.all.includes(:translation_key), limit: 20)
   end
 
   # GET /translations/1 or /translations/1.json
