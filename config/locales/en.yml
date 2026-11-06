@@ -31,6 +31,9 @@ en:
     parse:
       alert: "No file attached for parsing."
       notice: "Batch parsing has been started. Job id: %{job_id}"
+    translate:
+      alert: "Batch is already being translated or has been translated."
+      notice: "Batch translation has been started. Job id: %{job_id}"
     index:
       title: "Batches"
       new: "New batch"
@@ -46,6 +49,12 @@ en:
       title: "Editing batch"
     form:
       back: "Back to batches"
+    translating_modal:
+      title: "Translate batch"
+      source_locale: "Source locale"
+      target_locale: "Target locale"
+      submit: "Translate"
+      cancel: "Cancel"
     batch:
       game: "Game"
       codename: "Codename"

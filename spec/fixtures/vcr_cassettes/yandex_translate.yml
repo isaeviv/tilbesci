@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://translate.api.cloud.yandex.net/translate/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"targetLanguageCode":"kjh","texts":["Привет братишка!"],"folderId":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - translate.api.cloud.yandex.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Api-Key <YANDEX_API_KEY>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      X-Request-Id:
+      - 9ce329e5-3e7e-4844-92ac-c1b26d031f71
+      Date:
+      - Mon, 02 Nov 2026 14:06:08 GMT
+      Content-Length:
+      - '85'
+      X-Server-Trace-Id:
+      - 551179c10b5f1cd4:f1a4f8569de26108:9c16bbd38164b744:1
+      Server:
+      - ycalb
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0cmFuc2xhdGlvbnMiOlt7InRleHQiOiLQmNC30LXQvSDRhdCw0YDRi9C90LTQsNGBISIsICJkZXRlY3RlZExhbmd1YWdlQ29kZSI6InJ1In1dfQ==
+  recorded_at: Mon, 02 Nov 2026 14:06:33 GMT
+recorded_with: VCR 6.4.1

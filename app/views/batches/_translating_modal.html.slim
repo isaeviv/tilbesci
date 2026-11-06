@@ -1,0 +1,24 @@
+.modal data-modal-target="container"
+  .modal-background data-action="click->modal#close"
+  .modal-card
+    header.modal-card-head
+      p.modal-card-title
+        = t(".title")
+      button.delete[aria-label="close" data-action="click->modal#close"]
+    = form_with url: translate_batch_path(batch), method: :post, local: true do |f|
+      section.modal-card-body
+          .field
+            = f.label :source_locale, t(".source_locale"), class: "label"
+            .control
+              .select.is-fullwidth
+                = f.select :source_locale, Batch.source_locale.options, { selected: batch.source_locale || :en }, class: "select"
+          .field
+            = f.label :target_locale, t(".target_locale"), class: "label"
+            .control
+              .select.is-fullwidth
+                = f.select :target_locale, Batch.source_locale.options, {}, class: "select"
+      footer.modal-card-foot
+        .buttons
+          = f.submit t(".submit"), class: "button is-primary is-rounded"
+          button.button class="is-rounded" data-action="click->modal#close"
+            = t(".cancel")

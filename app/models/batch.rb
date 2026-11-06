@@ -26,6 +26,18 @@ class Batch < ApplicationRecord
 
   before_create :set_codename
 
+  def mark_as_in_progress!
+    update!(state: :in_progress)
+  end
+
+  def mark_as_translated!
+    update!(state: :translated)
+  end
+
+  def all_source_files_translated?
+    source_files.all? { |sf| sf.status.translated? }
+  end
+
   private
 
   def set_codename

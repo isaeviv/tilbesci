@@ -6,6 +6,10 @@
 == render @batch
 
 .buttons
+  div data-controller="modal" data-action="keydown@window->modal#closeOnEscape"
+    button.button.is-primary.is-rounded data-action="click->modal#open"
+      = t(".translate")
+    == render "translating_modal", batch: @batch
   = button_to t(".parse"), parse_batch_path(@batch), method: :post, class: 'button is-warning is-rounded'
   = link_to t(".edit"), edit_batch_path(@batch), class: "button is-link is-rounded"
   = button_to t(".destroy"), @batch, method: :delete, class: "button is-danger is-rounded"

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://translate.api.cloud.yandex.net/translate/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"targetLanguageCode":"kjh","texts":[1],"folderId":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - translate.api.cloud.yandex.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Api-Key <YANDEX_API_KEY>
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      X-Request-Id:
+      - 5355d0a3-e37d-4745-b884-ccc440dae742
+      Date:
+      - Fri, 06 Nov 2026 07:31:38 GMT
+      Content-Length:
+      - '84'
+      X-Server-Trace-Id:
+      - ad5c67e1e080cb45:32ff7e0fb77208e5:0bbc0f0b3c835ae6:1
+      Server:
+      - ycalb
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2RlIjozLCAibWVzc2FnZSI6InByb3RvOsKgKGxpbmUgMTozOCk6IGludmFsaWQgdmFsdWUgZm9yIHN0cmluZyBmaWVsZCB0ZXh0czogMSJ9
+  recorded_at: Fri, 06 Nov 2026 07:32:24 GMT
+recorded_with: VCR 6.4.1

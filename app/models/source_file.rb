@@ -24,9 +24,17 @@ class SourceFile < ApplicationRecord
   belongs_to :batch
   has_many :translation_keys, dependent: :nullify
 
-  enumerize :status, in: { pending: 0, processing: 1, processed: 2, failed: 3 }, default: :pending, scope: true
+  enumerize :status, in: { pending: 0, processing: 1, processed: 2, failed: 3, translating: 4, translated: 5}, default: :pending, scope: true
 
   mount_uploader :file, FileUploader
 
   validates :file, presence: true
+
+  def mark_as_translating!
+    update!(status: :translating)
+  end
+
+  def mark_as_translated!
+    update!(status: :translated)
+  end
 end

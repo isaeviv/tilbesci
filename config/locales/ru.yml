@@ -32,14 +32,18 @@ ru:
     parse:
       alert: "Нет файла для парсинга."
       notice: "Парсинг партии начат. ID задачи: %{job_id}"
+    translate:
+      alert: "Партия уже в процессе перевода или уже переведена."
+      notice: "Перевод партии начат. ID задачи: %{job_id}"
     index:
       title: "Партии"
       new: "Новая партия"
     show:
-      parse: "Распарсить партию"
-      edit: "Редактировать партию"
+      translate: "Перевести"
+      parse: "Распарсить"
+      edit: "Редактировать"
       back: "Назад к партиям"
-      destroy: "Удалить партию"
+      destroy: "Удалить"
     new:
       title: "Новая партия"
       back: "Назад к партиям"
@@ -47,6 +51,12 @@ ru:
       title: "Редактирование партии"
     form:
       back: "Назад к партиям"
+    translating_modal:
+      title: "Перевод партии"
+      source_locale: "Язык источника"
+      target_locale: "Целевой язык"
+      submit: "Перевести"
+      cancel: "Отмена"
     batch:
       game: "Игра"
       codename: "Кодовое имя"

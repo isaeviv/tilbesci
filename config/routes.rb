@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :translation_keys
     resources :batches do 
       post :parse, on: :member
+      post :translate, on: :member
     end
     resources :games
   end

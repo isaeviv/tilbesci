@@ -1,5 +1,18 @@
 class BatchesController < ApplicationController
-  before_action :set_batch, only: %i[ parse show edit update destroy ]
+  before_action :set_batch, only: %i[ translate parse show edit update destroy ]
+
+  def translate
+    if @batch.state.in_progress? || @batch.state.translated?
+      redirect_to @batch, alert: t(".alert")
+      return
+    end
+
+    target_locale = params[:target_locale]
+    source_locale = params[:source_locale]
+    
+    job = Translating::HandleBatchByYandexJob.perform_later(@batch.id, source_locale, target_locale)
+    redirect_to @batch, notice: t(".notice", job_id: job.job_id)
+  end
 
   def parse
     if @batch.source_files.empty? || @batch.source_files.any? { |sf| sf.file.blank? }
