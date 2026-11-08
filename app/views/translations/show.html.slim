@@ -1,4 +1,8 @@
-p style="color: green" = notice
+- if notice
+  div data-controller="notifications"
+    .notification.is-success data-notifications-target="notice"
+      span.delete.is-pulled-right.is-clickable data-action="click->notifications#closeNotice"
+      = notice
 
 .box id="#{dom_id @translation}"
   span.is-pulled-right
