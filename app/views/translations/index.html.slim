@@ -5,11 +5,66 @@ p style="color: green" = notice
     h1.title = t(".title")
   .column
     = link_to t(".new"), new_translation_path, class: "button is-primary is-rounded is-pulled-right"
+div data-controller="toggle"
+  = turbo_search_form_for @q, 
+    url: translations_path, 
+    html: { data: { turbo_frame: :translations_list, controller: "translations" } }, method: :get do |f|
+    .field.has-addons
+      .control.is-expanded
+        = f.search_field :value_cont, 
+          class: "input", 
+          placeholder: "Поиск по значению перевода...",
+          data: { action: "input->translations#search" }
+      
+      .control
+        = f.submit t("shared.search"), class: "button is-primary"
+      
+      .control
+        button.button.is-light type="button" data-action="click->toggle#toggle"
+          span = t("shared.filters")
+    - filters_active = params[:q]&.except(:value_cont)&.values&.any?(&:present?)
+    .box.mt-3 class=(filters_active ? "" : "is-hidden") data-toggle-target="content"
+      .columns.is-multiline
+        .column.is-3
+          .field
+            = f.label :locale_eq, "Локаль", class: "label is-small"
+            .control
+              .select.is-fullwidth.is-small
+                = f.select :locale_eq, 
+                  Translation.distinct.pluck(:locale), 
+                  { include_blank: "Все локали" }, 
+                  { data: { action: "change->translations#submitNow" } }
+        .column.is-3
+          .field
+            = f.label :source_eq, "Источник", class: "label is-small"
+            .control
+              .select.is-fullwidth.is-small
+                = f.select :source_eq, 
+                  Translation.source.options, 
+                  { include_blank: "Все источники" }, 
+                  { data: { action: "change->translations#submitNow" } }
 
-== @pagy.series_nav(:bulma)
-#translations
-  - @translations.each do |translation|
-    == render translation
-.mt-5
-  == @pagy.series_nav(:bulma)
+        .column.is-3
+          .field
+            = f.label :translation_key_name_cont, "Ключ перевода", class: "label is-small"
+            .control
+              = f.search_field :translation_key_name_cont, 
+                class: "input is-small", 
+                placeholder: "Например: home.title",
+                data: { action: "input->translations#search" }
 
+      .has-text-right
+        = link_to "Сбросить все фильтры", translations_path, class: "button is-small is-ghost"
+
+= turbo_frame_tag :translations_list, data: { turbo_action: "advance" } do
+  .mt-5
+    == @pagy.series_nav(:bulma)
+  #translations.mt-5
+    - if @translations.any?
+      - @translations.each do |translation|
+        == render translation
+    - else
+      .notification.is-warning.is-light
+        = t("shared.empty_list")
+  .mt-5
+    == @pagy.series_nav(:bulma)

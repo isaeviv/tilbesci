@@ -1,16 +1,75 @@
 p style="color: green" = notice
 
 .columns
-  .column.is-four-fifths
+  .column.is-three-quarters
     h1.title = t(".title")
   .column
     = link_to t(".new"), new_translation_key_path, class: "button is-primary is-rounded is-pulled-right"
+div data-controller="toggle"
+  = turbo_search_form_for @q, 
+    url: translation_keys_path, 
+    html: { data: { turbo_frame: :translation_keys_list, controller: "translations" } }, method: :get do |f|
+    .field.has-addons
+      .control.is-expanded
+        = f.search_field :name_cont, 
+          class: "input", 
+          placeholder: "Поиск по ключу перевода...",
+          data: { action: "input->translations#search" }
+      
+      .control
+        = f.submit t("shared.search"), class: "button is-primary"
+      
+      .control
+        button.button.is-light type="button" data-action="click->toggle#toggle"
+          span = t("shared.filters")
+    - filters_active = params[:q]&.except(:value_cont)&.values&.any?(&:present?)
+    .box.mt-3 class=(filters_active ? "" : "is-hidden") data-toggle-target="content"
+      .columns.is-multiline
+        .column.is-3
+          .field
+            = f.label :state_eq, "Статус", class: "label is-small"
+            .control
+              .select.is-fullwidth.is-small
+                = f.select :state_eq, 
+                  TranslationKey.state.options, 
+                  { include_blank: "Все статусы" }, 
+                  { data: { action: "change->translations#submitNow" } }
+        .column.is-3
+          .field
+            = f.label :source_eq, "Партия", class: "label is-small"
+            .control
+              .select.is-fullwidth.is-small
+                = f.select :batch_codename_eq,
+                Batch.all.pluck(:codename), 
+                { include_blank: "Все партии" },
+                class: "input is-small", 
+                placeholder: "Например: home.title",
+                data: { action: "change->translations#search" }
 
+        .column.is-3
+          .field
+            = f.label :translation_key_name_cont, t("game"), class: "label is-small"
+            .control
+              .select.is-fullwidth.is-small
+                = f.select :game_name_eq,
+                Game.distinct.pluck(:name),
+                { include_blank: "Все игры" },
+                class: "input is-small", 
+                placeholder: "Например: home.title",
+                data: { action: "change->translations#search" }
 
-== @pagy.series_nav(:bulma)
+      .has-text-right
+        = link_to "Сбросить все фильтры", translations_path, class: "button is-small is-ghost"
 
-#translation_keys
-  - @translation_keys.each do |translation_key|
-    == render translation_key
-.mt-5
-  == @pagy.series_nav(:bulma)
+= turbo_frame_tag :translation_keys_list, data: { turbo_action: "advance" } do
+  .mt-5
+    == @pagy.series_nav(:bulma)
+  #translation_keys.mt-5
+    - if @translation_keys.any?
+      - @translation_keys.each do |translation_key|
+        == render translation_key
+    - else
+      .notification.is-warning.is-light
+        = t("shared.empty_list")
+  .mt-5
+    == @pagy.series_nav(:bulma)

@@ -18,6 +18,9 @@ ru:
   shared:
     open: Открыть
     delete: Удалить
+    empty_list: Ничего не найдено
+    filters: Фильтры
+    search: Поиск
 
   batches:
     forms:
@@ -214,7 +217,7 @@ ru:
         isv: Межславянский
       source:
         yandex: Яндекс
-        manual: Рукопашный
+        manual: Ручной
     batch:
       state:
         pending: Ожидает перевода

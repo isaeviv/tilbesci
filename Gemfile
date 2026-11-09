@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.4"
 
 gem "pagy"
+gem "ransack"
 
 gem "json-stream"
 

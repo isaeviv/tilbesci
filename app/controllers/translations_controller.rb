@@ -3,7 +3,8 @@ class TranslationsController < ApplicationController
 
   # GET /translations or /translations.json
   def index
-    @pagy, @translations = pagy(:offset, Translation.all.includes(:translation_key), limit: 20)
+    @q = Translation.ransack(params[:q])
+    @pagy, @translations = pagy(:offset, @q.result(distinct: true).includes(:translation_key), limit: 20)
   end
 
   # GET /translations/1 or /translations/1.json

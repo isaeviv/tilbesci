@@ -17,7 +17,9 @@ en:
   shared:
     open: Open
     delete: Delete
-
+    empty_list: Not found
+    filters: Filters
+    search: Search
   batches:
     forms:
       add_file: "Add file"

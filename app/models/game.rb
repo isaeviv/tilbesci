@@ -14,4 +14,8 @@ class Game < ApplicationRecord
   has_many :translations, through: :translation_keys
 
   validates :name, presence: true, uniqueness: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end

@@ -1,5 +1,5 @@
 .box.is-relative.is-clickable id="#{dom_id translation}"
-  = link_to "", translation, class: "is-overlay"
+  = link_to "", translation, class: "is-overlay", data: { turbo_frame: "_top" }
   h5.title.is-5.mb-1
     = truncate translation.value, length: 60
   h6.subtitle.is-6.mb-1

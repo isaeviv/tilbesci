@@ -3,7 +3,8 @@ class TranslationKeysController < ApplicationController
 
   # GET /translation_keys or /translation_keys.json
   def index
-    @pagy, @translation_keys = pagy(:offset, TranslationKey.all.includes(:game, :batch), limit: 20)
+    @q = TranslationKey.ransack(params[:q])
+    @pagy, @translation_keys = pagy(:offset, @q.result(distinct: true).includes(:translations, :batch, :game), limit: 20)
   end
 
   # GET /translation_keys/1 or /translation_keys/1.json

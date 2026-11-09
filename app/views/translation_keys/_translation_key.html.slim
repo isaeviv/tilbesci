@@ -1,5 +1,5 @@
 .box.is-relative.is-clickable id="#{dom_id translation_key}"
-  = link_to "", translation_key, class: "is-overlay"
+  = link_to "", translation_key, class: "is-overlay", data: { turbo_frame: "_top" }
   h3.title.is-5.mb-1
     = translation_key.name
     = state_tag_for translation_key

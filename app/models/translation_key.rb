@@ -30,7 +30,15 @@ class TranslationKey < ApplicationRecord
   belongs_to :source_file, optional: true
   has_many :translations, dependent: :destroy
 
-  enumerize :state, in: [:pending, :translated], default: :pending
+  enumerize :state, in: [:pending, :translated, :failure], default: :pending
 
   validates :name, presence: true, uniqueness: { scope: :game_id }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "state"]
+  end
+
+   def self.ransackable_associations(auth_object = nil)
+    ["batch", "game", "source_file", "translations"]
+  end
 end

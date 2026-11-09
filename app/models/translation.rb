@@ -31,4 +31,13 @@ class Translation < ApplicationRecord
 
   validates :locale, presence: true
   validates :value, presence: true
+
+  def self.ransackable_associations(auth_object = nil)
+    ["translation_key"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["id", "locale", "source", "state", "value"]
+  end
+
 end

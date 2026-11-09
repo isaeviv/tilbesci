@@ -38,6 +38,14 @@ class Batch < ApplicationRecord
     source_files.all? { |sf| sf.status.translated? }
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["codename", "source_locale", "state"]
+  end
+
+   def self.ransackable_associations(auth_object = nil)
+    ["game", "source_files", "translation_keys", "translations"]
+  end
+
   private
 
   def set_codename

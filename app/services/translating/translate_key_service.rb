@@ -28,6 +28,7 @@ module Translating
 
       target_translation = translation_key.translations.with_locale(target_locale).first_or_initialize
       if target_translation.value != translated_text
+        target_translation.source = :yandex
         target_translation.value = translated_text
         target_translation.save!
       end
